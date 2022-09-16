@@ -3,7 +3,7 @@ public:
     int minimumOperations(vector<int>& nums) {
         
         
-        priority_queue<int, vector<int>, greater<int>> pq;
+        // priority_queue<int, vector<int>, greater<int>> pq;
         
         unordered_map<int,int> mp;
         
