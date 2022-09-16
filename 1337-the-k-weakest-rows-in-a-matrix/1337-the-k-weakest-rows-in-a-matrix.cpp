@@ -1,5 +1,15 @@
 class Solution {
 public:
+    void reverse1( vector<int> &ans){
+        
+        int i =0;
+        int j = ans.size()-1;
+        
+        while( i<j){
+            swap( ans[i++], ans[j--]);
+        }
+        
+    }
     vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
         
         int row = mat.size();
@@ -43,7 +53,7 @@ public:
             pq.pop();
             ans.push_back(top.second);
         }
-        reverse(ans.begin(), ans.end());
+        reverse1(ans);
         return ans;
     }
 };
