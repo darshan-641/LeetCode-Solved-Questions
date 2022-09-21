@@ -7,13 +7,14 @@ public:
             return ;
         }
         
+                
+//         exclude
+
+        solve(nums, i+1, j, ans,temp);
         //         include
         temp.push_back(nums[i]);
         solve(nums, i+1, j, ans, temp);
-        
-//         exclude
-        temp.pop_back();
-        solve(nums, i+1, j, ans,temp);
+
         
 
     }
