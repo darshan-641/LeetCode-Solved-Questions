@@ -15,14 +15,20 @@ public:
     bool solve( TreeNode* root, int k, unordered_map<int,int> &mp){
         
         if( root == nullptr) return false;
-        if( mp.count(k - root -> val)){
-            return true;
-        }
         
         mp[root -> val]++;
+        
+        auto it = mp.find(k - root -> val);
+        
+        if( it != mp.end()){
+            
+            if( k - root -> val == root -> val){
+                if( mp[k - root -> val] >=2) return true;
+            }
+            else return true;
+        }
+        
         return solve( root -> left, k, mp) || solve( root -> right, k, mp);
-        
-        
     }
     bool findTarget(TreeNode* root, int k) {
         
