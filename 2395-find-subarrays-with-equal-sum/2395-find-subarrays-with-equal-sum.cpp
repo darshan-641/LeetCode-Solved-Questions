@@ -2,7 +2,9 @@ class Solution {
 public:
     bool findSubarrays(vector<int>& nums) {
         
-        unordered_map<int,int> mp;
+        // unordered_map<int,int> mp;
+        
+        unordered_set<int> s;
         
 //         for( int i=0; i<nums.size(); i++){
             
@@ -19,9 +21,9 @@ public:
         for( int i=1; i<nums.size(); i++){
             
             
-            if( mp[nums[i] + nums[i-1]] == 1) return true;
+            if( !s.insert(nums[i] + nums[i-1]).second) return true;
             
-            mp[nums[i] + nums[i-1]]++;
+            // s[nums[i] + nums[i-1]]++;
         }
         
         
