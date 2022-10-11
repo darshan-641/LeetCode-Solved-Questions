@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root, string temp, vector<string> &ans){
+    void solve(TreeNode* root, string &temp, vector<string> &ans){
         
         if( root == nullptr){
             
@@ -19,11 +19,13 @@ public:
         }
         
         if( !root -> left && !root ->right){
+            string oldTemp = temp;
             temp += to_string(root -> val);
             ans.push_back(temp);
+            temp = oldTemp;
             
         }
-        // string oldTemp = temp;
+        string oldTemp = temp;
         temp += to_string(root -> val);
         temp += '-';
         temp += '>';
@@ -34,6 +36,8 @@ public:
         
         
         solve(root -> right, temp, ans);
+        
+        temp = oldTemp;
         
         
         
