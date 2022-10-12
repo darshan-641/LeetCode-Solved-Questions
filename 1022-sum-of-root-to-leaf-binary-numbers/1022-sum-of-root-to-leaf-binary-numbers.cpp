@@ -12,11 +12,11 @@
 class Solution {
 public:
     
-    void solve( TreeNode* root, int &ans, int sum){
+    void solve( TreeNode* root, int &ans, int &sum){
         if( root == nullptr) return ;
         
 //      condition
-        
+        int oldSum = sum;
         sum  =  2*sum + root->val;
         
         if( !root -> left && !root -> right){
@@ -25,6 +25,8 @@ public:
         
          solve(root->left, ans,sum);
         solve(root->right, ans,sum);
+        
+        sum = oldSum;
         
     }
     int sumRootToLeaf(TreeNode* root) {
