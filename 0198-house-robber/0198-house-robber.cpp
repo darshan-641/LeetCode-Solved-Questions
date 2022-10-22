@@ -1,19 +1,23 @@
 class Solution {
 public:
     
-    int solve( int i, int size, vector<int> &nums, vector<int> &dp){
+    int solve( int size, vector<int> &nums){
         
-        if( i>= size) return 0;
+        vector<int> dp(size+2,0);
         
-        if( dp[i] != -1) return dp[i];
         
-        int incl = nums[i] + solve(i+2, size,nums,dp);
-        int excl = solve(i+1, size, nums,dp);
+        for( int i = size -1; i>=0; i--){
+            
+            int incl = nums[i] + dp[i+2];
+            int excl = dp[i+1];
+            dp[i] = max(incl, excl);
+        }
         
-        return dp[i] = max(incl,excl);
+        return dp[0];
     }
+    
     int rob(vector<int>& nums) {
         vector<int> dp(nums.size()+1,-1);
-        return solve(0,nums.size(), nums,dp);
+        return solve(nums.size(), nums);
     }
 };
