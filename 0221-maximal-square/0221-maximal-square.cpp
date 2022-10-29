@@ -48,6 +48,41 @@ public:
         
     }
     
+//     solve TAbulation
+    
+    int solveTab(vector<vector<char>>& matrix, int &maxi,int n, int c){
+        
+//         step 1; create DP array
+        vector<vector<int>>dp (n+1, vector<int>(c+1,0));
+        
+        // Step 2: Analyse the base case
+        
+//         step 3: decide for loop range
+        
+        for( int i = n-1; i>=0; i--){
+            
+            for( int j = c-1; j>=0; j--){
+              
+                int bottom = dp[i+1][j];
+                int right = dp[i][j+1];
+                int diagonal = dp[i+1][j+1];
+
+                if( matrix[i][j] == '1'){
+                    int side = 1 + min(bottom, min(right, diagonal));
+                    maxi = max(maxi,side);
+                    dp[i][j] = side;
+                }
+                else{
+                    dp[i][j] = 0;
+                }
+                
+            }
+        }
+        
+        return dp[0][0];
+        
+    }
+    
     int maximalSquare(vector<vector<char>>& matrix) {
         
         
@@ -58,8 +93,10 @@ public:
         int n = matrix.size();
         int c = matrix[0].size();
         
-        vector<vector<int>> dp(n+1, vector<int>(c+1,-1));
-        solveMemo(matrix,0,0,maxi,dp);
+        // vector<vector<int>> dp(n+1, vector<int>(c+1,-1));
+        // solveMemo(matrix,0,0,maxi,dp);
+        
+        solveTab(matrix,maxi,n,c);
         return maxi*maxi;
     }
 };
