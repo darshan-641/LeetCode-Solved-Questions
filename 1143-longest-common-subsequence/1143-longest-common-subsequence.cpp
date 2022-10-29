@@ -46,12 +46,44 @@ public:
         return dp[0][0];
         
     }
+    
+    int solveSO1(string t1, string t2, int a, int b ){
+
+        
+        vector<int> curr(b+1,0);
+        vector<int> next(b+1,0);
+        
+        for( int i = a-1; i>=0; i--){
+            
+            
+            for( int j =b-1; j>=0; j--){
+               
+             int ans = 0;   
+            if( t1[i] == t2[j]){
+                ans = 1 + next[j+1];
+            }
+            else{
+                ans = max(next[j], curr[j+1]);
+            }
+
+            curr[j] = ans;
+
+            }
+            
+            next = curr;
+        }
+        
+        return curr[0];
+        
+    }
     int longestCommonSubsequence(string t1, string t2) {
         
 //         vector<vector<int>> dp(t1.size()+1, vector<int>(t2.size()+1, -1));
         
 //         int ans = solve(t1,t2,0,0,dp);
-        int ans = solveTab(t1,t2,t1.size(), t2.size());
+        // int ans = solveTab(t1,t2,t1.size(), t2.size());
+        
+        int ans = solveSO1(t1,t2,t1.size(), t2.size());
         return ans;
     }
 };
