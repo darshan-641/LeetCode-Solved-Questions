@@ -25,9 +25,9 @@ public:
         }
         return index;
     }
-    int checkSecond(vector<int>& nums, int target){
+    int checkSecond(vector<int>& nums, int target, int s){
         
-        int start = 0;
+        int start = s;
         int end = nums.size()-1;
         int mid = start + (end - start)/2;
         
@@ -55,7 +55,7 @@ public:
         int first = checkFirst(nums,target);
         if( first == -1) return {-1,-1};
         
-        int second = checkSecond(nums,target);
+        int second = checkSecond(nums,target,first);
         if( second == -1) return {first,first};
         
         return {first, second};
