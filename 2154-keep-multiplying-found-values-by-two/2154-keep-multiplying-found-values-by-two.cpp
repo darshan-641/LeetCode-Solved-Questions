@@ -4,7 +4,7 @@ public:
         
         int n = nums.size();
         int i =0; 
-        unordered_map<int,int> mp;
+        int mp[1000] = {0};
         while( i < n){
             
             if( nums[i] == o && mp[i] == 0){
