@@ -4,16 +4,16 @@ public:
         
         string str = to_string(num);
         
-        for( int i =0; i<str.length(); i++){
-            
-            if( str[i] == '6'){
-                str[i] = '9';
-                break;
-            }
+        int pos = str.find('6');
+        
+        if( pos != -1){
+            str[pos]= '9';
+            num = stoi(str);
         }
         
         
-         num =  stoi(str);
+        
+         // num =  stoi(str);
         return num;
     }
 };
