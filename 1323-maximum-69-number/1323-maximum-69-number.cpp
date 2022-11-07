@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int maximum69Number (int num) {
+    int maximum69Number (int &num) {
         
         string str = to_string(num);
         
@@ -11,9 +11,6 @@ public:
             num = stoi(str);
         }
         
-        
-        
-         // num =  stoi(str);
         return num;
     }
 };
