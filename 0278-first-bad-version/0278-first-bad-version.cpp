@@ -4,24 +4,25 @@
 class Solution {
 public:
     int firstBadVersion(int n) {
-        int start = 1;
-        int end = n;
-        int mid = start + (end - start)/2;
         
-        int firstbad = 0;
-        
-        while( start <= end){
+        int i =1;
+        int j = n;
+        int mid = i + ( j-i)/2;
+        int firstBad = -1;
+        while( i<= j){
             
-            bool flag = isBadVersion(mid);
+            bool isBad = isBadVersion(mid);
             
-            if( !flag) start = mid +1;
-            else{
-                firstbad = mid;
-                end = mid-1;
+            if( isBad){
+                firstBad = mid;
+                j = mid -1;
             }
-            mid = start + (end - start)/2;
+            else{
+                i = mid +1;
+            }
+            mid = i + ( j-i)/2;
         }
         
-        return firstbad;
+        return firstBad;
     }
 };
