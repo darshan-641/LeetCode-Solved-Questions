@@ -12,12 +12,7 @@ class Solution {
 public:
     ListNode* mergeInBetween(ListNode* list1, int a, int b, ListNode* list2) {
         
-        ListNode* end = list2;
-//         list2 end
-        while( end -> next!= NULL){
-            end = end -> next;
-        }
-        
+     
         int count = 1;
         
         ListNode* first;
@@ -35,6 +30,12 @@ public:
             }
             count++;
             temp = temp -> next;
+        }
+        
+        ListNode* end = list2;
+//         list2 end
+        while( end -> next!= NULL){
+            end = end -> next;
         }
         
         first -> next = list2;
