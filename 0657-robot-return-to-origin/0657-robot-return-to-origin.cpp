@@ -7,10 +7,20 @@ public:
         
         for( int i =0 ;i<moves.size(); i++){
             
-            if( moves[i] == 'U') sky++;
-            else if( moves[i] == 'D') sky--;
-            else if( moves[i] == 'L') earth++;
-            else earth--;
+            
+            
+            switch (moves[i]) {
+                case 'U' : sky++; break;
+                case 'D' : sky--; break;
+                case 'R' : earth++; break;
+                case 'L' : earth--; break;
+            }
+            
+            
+            // if( moves[i] == 'U') sky++;
+            // else if( moves[i] == 'D') sky--;
+            // else if( moves[i] == 'L') earth++;
+            // else earth--;
         }
         
         return (!sky && !earth);
