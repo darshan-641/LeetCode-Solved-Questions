@@ -5,7 +5,27 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
     private:
-    
+    void dfs( int row, int col, vector<vector<int>> &visited, vector<vector<char>> &grid ){
+        
+        visited[row][col] = 1;
+          int n = grid.size();
+        int m = grid[0].size();
+        
+        for( int delrow = -1; delrow<=1; delrow++){
+                for( int delcol = -1; delcol<= 1; delcol++ ){
+                    
+                    int nrow = row + delrow;
+                    int ncol = col + delcol;
+                    
+                    if( nrow >=0 && nrow <n && ncol >=0 && ncol <m &&
+                        grid[nrow][ncol] == '1' && !visited[nrow][ncol])
+                    {
+                        visited[nrow][ncol] = 1;
+                       dfs(nrow,ncol,visited,grid);
+                    }
+                }
+            }
+    }
     void bfs( int row, int col, vector<vector<int>> &visited, vector<vector<char>> &grid){
         
         
@@ -54,7 +74,8 @@ class Solution {
             for( int col =0; col<m; col++){
                 
                 if( !visited[row][col] && grid[row][col] == '1'){
-                    bfs(row,col,visited,grid);
+                    // bfs(row,col,visited,grid);
+                    dfs(row,col,visited,grid);
                     count++;
                 }
             }
