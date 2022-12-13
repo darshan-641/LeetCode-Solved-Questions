@@ -29,12 +29,12 @@ public:
         int mini  = INT_MAX;
         vector<vector<int>> dp(n+1, vector<int>(n+1,-1));
         for( int i=0; i<n; i++){
-            // int check  = ;
-            // if( mini >check){
-            //     mini = check;
-            // }
+            int check  =  solve(n-1,i,matrix,n,dp);
+            if( mini >check){
+                mini = check;
+            }
             
-            mini = min(mini,  solve(n-1,i,matrix,n,dp));
+            // mini = min(mini, );
         }
         
         return mini;
