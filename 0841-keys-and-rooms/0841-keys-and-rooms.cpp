@@ -2,8 +2,8 @@ class Solution {
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
         
-        int n = rooms.size();
-        vector<int> vis(n,0);
+        // int n = rooms.size();
+        vector<int> vis(rooms.size(),0);
         
         queue<int> q;
         
@@ -24,8 +24,8 @@ public:
             }
         }
         
-        for( int i =0 ;i<n; i++){
-            if( !vis[i]) return false;
+        for( int i =0 ;i<rooms.size(); i++){
+            if( vis[i] == 0) return false;
         }
         return true;
     }
