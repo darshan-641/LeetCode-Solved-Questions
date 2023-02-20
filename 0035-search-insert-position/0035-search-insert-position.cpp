@@ -1,3 +1,5 @@
+#pragma GCC optimize("Ofast")
+
 class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
